@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+func d(_ any:Any){
+    print(any)
+}
+
+func d(_ key:Any, _ any:Any){
+    print(any)
+}

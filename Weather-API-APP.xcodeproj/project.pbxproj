@@ -9,18 +9,24 @@
 /* Begin PBXBuildFile section */
 		71ECDBA62B9C4CB3005752D3 /* Weather_API_APPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBA52B9C4CB3005752D3 /* Weather_API_APPApp.swift */; };
 		71ECDBA82B9C4CB3005752D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBA72B9C4CB3005752D3 /* ContentView.swift */; };
-		71ECDBAA2B9C4CB3005752D3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBA92B9C4CB3005752D3 /* Item.swift */; };
 		71ECDBAC2B9C4CB5005752D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71ECDBAB2B9C4CB5005752D3 /* Assets.xcassets */; };
-		71ECDBAF2B9C4CB5005752D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71ECDBAE2B9C4CB5005752D3 /* Preview Assets.xcassets */; };
+		71ECDBB82B9C5D48005752D3 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBB72B9C5D48005752D3 /* APIManager.swift */; };
+		71ECDBBB2B9CA0AA005752D3 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBBA2B9CA0AA005752D3 /* WeatherModel.swift */; };
+		71ECDBBD2B9CA3CA005752D3 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBBC2B9CA3CA005752D3 /* SettingsManager.swift */; };
+		71ECDBBF2B9CA693005752D3 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBBE2B9CA693005752D3 /* Enums.swift */; };
+		71ECDBC12B9CB0D9005752D3 /* DebugUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBC02B9CB0D9005752D3 /* DebugUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		71ECDBA22B9C4CB3005752D3 /* Weather-API-APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather-API-APP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71ECDBA52B9C4CB3005752D3 /* Weather_API_APPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather_API_APPApp.swift; sourceTree = "<group>"; };
 		71ECDBA72B9C4CB3005752D3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		71ECDBA92B9C4CB3005752D3 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		71ECDBAB2B9C4CB5005752D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		71ECDBAE2B9C4CB5005752D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		71ECDBB72B9C5D48005752D3 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		71ECDBBA2B9CA0AA005752D3 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		71ECDBBC2B9CA3CA005752D3 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		71ECDBBE2B9CA693005752D3 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		71ECDBC02B9CB0D9005752D3 /* DebugUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,20 +60,39 @@
 			isa = PBXGroup;
 			children = (
 				71ECDBA52B9C4CB3005752D3 /* Weather_API_APPApp.swift */,
-				71ECDBA72B9C4CB3005752D3 /* ContentView.swift */,
-				71ECDBA92B9C4CB3005752D3 /* Item.swift */,
+				71ECDBB62B9C5D39005752D3 /* Managers */,
+				71ECDBB52B9C5D31005752D3 /* Views */,
+				71ECDBB92B9C5DE5005752D3 /* Model */,
 				71ECDBAB2B9C4CB5005752D3 /* Assets.xcassets */,
-				71ECDBAD2B9C4CB5005752D3 /* Preview Content */,
 			);
 			path = "Weather-API-APP";
 			sourceTree = "<group>";
 		};
-		71ECDBAD2B9C4CB5005752D3 /* Preview Content */ = {
+		71ECDBB52B9C5D31005752D3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				71ECDBAE2B9C4CB5005752D3 /* Preview Assets.xcassets */,
+				71ECDBA72B9C4CB3005752D3 /* ContentView.swift */,
 			);
-			path = "Preview Content";
+			path = Views;
+			sourceTree = "<group>";
+		};
+		71ECDBB62B9C5D39005752D3 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				71ECDBB72B9C5D48005752D3 /* APIManager.swift */,
+				71ECDBBC2B9CA3CA005752D3 /* SettingsManager.swift */,
+				71ECDBBE2B9CA693005752D3 /* Enums.swift */,
+				71ECDBC02B9CB0D9005752D3 /* DebugUtils.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		71ECDBB92B9C5DE5005752D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				71ECDBBA2B9CA0AA005752D3 /* WeatherModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,7 +153,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71ECDBAF2B9C4CB5005752D3 /* Preview Assets.xcassets in Resources */,
 				71ECDBAC2B9C4CB5005752D3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,8 +164,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71ECDBB82B9C5D48005752D3 /* APIManager.swift in Sources */,
+				71ECDBBD2B9CA3CA005752D3 /* SettingsManager.swift in Sources */,
 				71ECDBA82B9C4CB3005752D3 /* ContentView.swift in Sources */,
-				71ECDBAA2B9C4CB3005752D3 /* Item.swift in Sources */,
+				71ECDBBB2B9CA0AA005752D3 /* WeatherModel.swift in Sources */,
+				71ECDBC12B9CB0D9005752D3 /* DebugUtils.swift in Sources */,
+				71ECDBBF2B9CA693005752D3 /* Enums.swift in Sources */,
 				71ECDBA62B9C4CB3005752D3 /* Weather_API_APPApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,7 +303,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Weather-API-APP/Preview Content\"";
 				DEVELOPMENT_TEAM = U442ACHGQ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -304,7 +331,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Weather-API-APP/Preview Content\"";
 				DEVELOPMENT_TEAM = U442ACHGQ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
