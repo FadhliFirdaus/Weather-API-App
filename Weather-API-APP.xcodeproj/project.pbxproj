@@ -15,10 +15,13 @@
 		71ECDBBD2B9CA3CA005752D3 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBBC2B9CA3CA005752D3 /* SettingsManager.swift */; };
 		71ECDBBF2B9CA693005752D3 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBBE2B9CA693005752D3 /* Enums.swift */; };
 		71ECDBC12B9CB0D9005752D3 /* DebugUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBC02B9CB0D9005752D3 /* DebugUtils.swift */; };
-		71ECDBC32B9CBDBB005752D3 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBC22B9CBDBB005752D3 /* WeatherManager.swift */; };
 		71ECDBCA2B9CBFB5005752D3 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBC92B9CBFB5005752D3 /* Helper.swift */; };
 		71ECDBCD2B9CC417005752D3 /* BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBCC2B9CC417005752D3 /* BookmarkManager.swift */; };
-		71ECDBCF2B9CC616005752D3 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBCE2B9CC616005752D3 /* BookmarkView.swift */; };
+		71ECDBCF2B9CC616005752D3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBCE2B9CC616005752D3 /* DetailView.swift */; };
+		71ECDBD12B9CD065005752D3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBD02B9CD065005752D3 /* HomeView.swift */; };
+		71ECDBD32B9CDA2A005752D3 /* PairedRowText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBD22B9CDA2A005752D3 /* PairedRowText.swift */; };
+		71ECDBD52B9CE199005752D3 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBD42B9CE199005752D3 /* LocationManager.swift */; };
+		71ECDBD72B9CEFFF005752D3 /* MockWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBD62B9CEFFF005752D3 /* MockWeatherData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,10 +34,13 @@
 		71ECDBBC2B9CA3CA005752D3 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		71ECDBBE2B9CA693005752D3 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		71ECDBC02B9CB0D9005752D3 /* DebugUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugUtils.swift; sourceTree = "<group>"; };
-		71ECDBC22B9CBDBB005752D3 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		71ECDBC92B9CBFB5005752D3 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		71ECDBCC2B9CC417005752D3 /* BookmarkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkManager.swift; sourceTree = "<group>"; };
-		71ECDBCE2B9CC616005752D3 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
+		71ECDBCE2B9CC616005752D3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		71ECDBD02B9CD065005752D3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		71ECDBD22B9CDA2A005752D3 /* PairedRowText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairedRowText.swift; sourceTree = "<group>"; };
+		71ECDBD42B9CE199005752D3 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		71ECDBD62B9CEFFF005752D3 /* MockWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				71ECDBA72B9C4CB3005752D3 /* ContentView.swift */,
+				71ECDBD02B9CD065005752D3 /* HomeView.swift */,
 				71ECDBC62B9CBE7A005752D3 /* Components */,
 				71ECDBC52B9CBE75005752D3 /* Landscape */,
 				71ECDBC42B9CBE6D005752D3 /* Portrait */,
@@ -94,7 +101,7 @@
 				71ECDBB72B9C5D48005752D3 /* APIManager.swift */,
 				71ECDBBC2B9CA3CA005752D3 /* SettingsManager.swift */,
 				71ECDBCC2B9CC417005752D3 /* BookmarkManager.swift */,
-				71ECDBC22B9CBDBB005752D3 /* WeatherManager.swift */,
+				71ECDBD42B9CE199005752D3 /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -103,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				71ECDBBA2B9CA0AA005752D3 /* WeatherModel.swift */,
+				71ECDBD62B9CEFFF005752D3 /* MockWeatherData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,7 +118,7 @@
 		71ECDBC42B9CBE6D005752D3 /* Portrait */ = {
 			isa = PBXGroup;
 			children = (
-				71ECDBCE2B9CC616005752D3 /* BookmarkView.swift */,
+				71ECDBCE2B9CC616005752D3 /* DetailView.swift */,
 			);
 			path = Portrait;
 			sourceTree = "<group>";
@@ -125,6 +133,7 @@
 		71ECDBC62B9CBE7A005752D3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				71ECDBD22B9CDA2A005752D3 /* PairedRowText.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -210,13 +219,16 @@
 			files = (
 				71ECDBB82B9C5D48005752D3 /* APIManager.swift in Sources */,
 				71ECDBBD2B9CA3CA005752D3 /* SettingsManager.swift in Sources */,
-				71ECDBC32B9CBDBB005752D3 /* WeatherManager.swift in Sources */,
+				71ECDBD72B9CEFFF005752D3 /* MockWeatherData.swift in Sources */,
 				71ECDBA82B9C4CB3005752D3 /* ContentView.swift in Sources */,
 				71ECDBBB2B9CA0AA005752D3 /* WeatherModel.swift in Sources */,
 				71ECDBC12B9CB0D9005752D3 /* DebugUtils.swift in Sources */,
 				71ECDBCA2B9CBFB5005752D3 /* Helper.swift in Sources */,
 				71ECDBCD2B9CC417005752D3 /* BookmarkManager.swift in Sources */,
-				71ECDBCF2B9CC616005752D3 /* BookmarkView.swift in Sources */,
+				71ECDBCF2B9CC616005752D3 /* DetailView.swift in Sources */,
+				71ECDBD12B9CD065005752D3 /* HomeView.swift in Sources */,
+				71ECDBD52B9CE199005752D3 /* LocationManager.swift in Sources */,
+				71ECDBD32B9CDA2A005752D3 /* PairedRowText.swift in Sources */,
 				71ECDBBF2B9CA693005752D3 /* Enums.swift in Sources */,
 				71ECDBA62B9C4CB3005752D3 /* Weather_API_APPApp.swift in Sources */,
 			);

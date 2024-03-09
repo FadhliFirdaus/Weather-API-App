@@ -15,6 +15,8 @@ class BookmarkManager:ObservableObject {
     ]
     
     var previousLocation =  BookmarkedLocation(countryCode: "FR", cityName: "Paris", lat: 48.8566, long: 2.3522)
+    
+    var activeBookmark:BookmarkedLocation?
 
 }
 

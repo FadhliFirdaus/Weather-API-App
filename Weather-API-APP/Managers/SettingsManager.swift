@@ -6,10 +6,20 @@
 //
 
 import Foundation
+import Combine
 
-class SettingsManager:ObservableObject {
-    var unitMode:Unit = .standard
-    var userLat = 5.5145
-    var userLong = 102.5331
-    var userLang = "en"
+class SettingsManager: ObservableObject {
+    
+    static let shared = SettingsManager()
+    
+        // MARK: - Published Variables
+    
+    @Published var unitMode: Unit = .metric
+    @Published var userLat = 51.509865
+    @Published var userLong = -0.118092
+    @Published var userLang = "en"
+    
+        // Private initializer to prevent external instantiation
+    private init() {}
 }
+
