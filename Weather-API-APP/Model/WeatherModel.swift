@@ -9,9 +9,8 @@ import Foundation
 
 
 class WeatherModel {
-    /*
-     https://api.openweathermap.org/data/2.5/weather?lat=3.1830&lon=101.7462&appid=c6e381d8c7ff98f0fee43775817cf6ad
-     */
+    
+    var weatherDatasource:WeatherResponse?
     
     func getWeatherURL(settingsData:SettingsManager) -> String {
         let latitude = "lat=\(settingsData.userLat)"
@@ -30,15 +29,13 @@ class WeatherModel {
             d("Invalid URL")
             return
         }
+        
         let urlSession = URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                d("error")
+            if error != nil {
                 return
             }
             d(weatherURL)
             if let data = data {
-                d("data")
-                d(data)
                 self.decodeWeatherResponse(data: data)
             }
         }
@@ -49,6 +46,7 @@ class WeatherModel {
         do {
             let decodedResponse = try JSONDecoder().decode(WeatherResponse.self, from: data)
             print("Decoded Weather Response: \(decodedResponse)")
+            self.weatherDatasource = decodedResponse
         } catch {
             d("error decoding")
         }

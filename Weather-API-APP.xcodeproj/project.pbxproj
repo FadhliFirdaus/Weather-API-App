@@ -15,6 +15,10 @@
 		71ECDBBD2B9CA3CA005752D3 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBBC2B9CA3CA005752D3 /* SettingsManager.swift */; };
 		71ECDBBF2B9CA693005752D3 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBBE2B9CA693005752D3 /* Enums.swift */; };
 		71ECDBC12B9CB0D9005752D3 /* DebugUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBC02B9CB0D9005752D3 /* DebugUtils.swift */; };
+		71ECDBC32B9CBDBB005752D3 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBC22B9CBDBB005752D3 /* WeatherManager.swift */; };
+		71ECDBCA2B9CBFB5005752D3 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBC92B9CBFB5005752D3 /* Helper.swift */; };
+		71ECDBCD2B9CC417005752D3 /* BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBCC2B9CC417005752D3 /* BookmarkManager.swift */; };
+		71ECDBCF2B9CC616005752D3 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDBCE2B9CC616005752D3 /* BookmarkView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,10 @@
 		71ECDBBC2B9CA3CA005752D3 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		71ECDBBE2B9CA693005752D3 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		71ECDBC02B9CB0D9005752D3 /* DebugUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugUtils.swift; sourceTree = "<group>"; };
+		71ECDBC22B9CBDBB005752D3 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		71ECDBC92B9CBFB5005752D3 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		71ECDBCC2B9CC417005752D3 /* BookmarkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkManager.swift; sourceTree = "<group>"; };
+		71ECDBCE2B9CC616005752D3 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,7 @@
 				71ECDBB62B9C5D39005752D3 /* Managers */,
 				71ECDBB52B9C5D31005752D3 /* Views */,
 				71ECDBB92B9C5DE5005752D3 /* Model */,
+				71ECDBCB2B9CC403005752D3 /* Utils */,
 				71ECDBAB2B9C4CB5005752D3 /* Assets.xcassets */,
 			);
 			path = "Weather-API-APP";
@@ -72,6 +81,9 @@
 			isa = PBXGroup;
 			children = (
 				71ECDBA72B9C4CB3005752D3 /* ContentView.swift */,
+				71ECDBC62B9CBE7A005752D3 /* Components */,
+				71ECDBC52B9CBE75005752D3 /* Landscape */,
+				71ECDBC42B9CBE6D005752D3 /* Portrait */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -81,8 +93,8 @@
 			children = (
 				71ECDBB72B9C5D48005752D3 /* APIManager.swift */,
 				71ECDBBC2B9CA3CA005752D3 /* SettingsManager.swift */,
-				71ECDBBE2B9CA693005752D3 /* Enums.swift */,
-				71ECDBC02B9CB0D9005752D3 /* DebugUtils.swift */,
+				71ECDBCC2B9CC417005752D3 /* BookmarkManager.swift */,
+				71ECDBC22B9CBDBB005752D3 /* WeatherManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -93,6 +105,38 @@
 				71ECDBBA2B9CA0AA005752D3 /* WeatherModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		71ECDBC42B9CBE6D005752D3 /* Portrait */ = {
+			isa = PBXGroup;
+			children = (
+				71ECDBCE2B9CC616005752D3 /* BookmarkView.swift */,
+			);
+			path = Portrait;
+			sourceTree = "<group>";
+		};
+		71ECDBC52B9CBE75005752D3 /* Landscape */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Landscape;
+			sourceTree = "<group>";
+		};
+		71ECDBC62B9CBE7A005752D3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		71ECDBCB2B9CC403005752D3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				71ECDBBE2B9CA693005752D3 /* Enums.swift */,
+				71ECDBC02B9CB0D9005752D3 /* DebugUtils.swift */,
+				71ECDBC92B9CBFB5005752D3 /* Helper.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,9 +210,13 @@
 			files = (
 				71ECDBB82B9C5D48005752D3 /* APIManager.swift in Sources */,
 				71ECDBBD2B9CA3CA005752D3 /* SettingsManager.swift in Sources */,
+				71ECDBC32B9CBDBB005752D3 /* WeatherManager.swift in Sources */,
 				71ECDBA82B9C4CB3005752D3 /* ContentView.swift in Sources */,
 				71ECDBBB2B9CA0AA005752D3 /* WeatherModel.swift in Sources */,
 				71ECDBC12B9CB0D9005752D3 /* DebugUtils.swift in Sources */,
+				71ECDBCA2B9CBFB5005752D3 /* Helper.swift in Sources */,
+				71ECDBCD2B9CC417005752D3 /* BookmarkManager.swift in Sources */,
+				71ECDBCF2B9CC616005752D3 /* BookmarkView.swift in Sources */,
 				71ECDBBF2B9CA693005752D3 /* Enums.swift in Sources */,
 				71ECDBA62B9C4CB3005752D3 /* Weather_API_APPApp.swift in Sources */,
 			);
