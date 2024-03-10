@@ -8,6 +8,7 @@
 import Foundation
 
 let mockWeatherResponse: WeatherResponse = WeatherResponse(
+    coord: Coordinate(lat: -50, lon: 120.0),
     weather: [Weather(main: "Sunny", description: "Clear sky")],
     main: Details(
         temp: 25.0,

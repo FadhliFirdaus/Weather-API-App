@@ -51,7 +51,7 @@ class WeatherModel:ObservableObject {
     }
     
     func callURLSession(withURL: URL) {
-        print("url is : \(withURL)")
+//        print("url is : \(withURL)")
 
         let urlSession = URLSession(configuration: .default).dataTask(with: withURL) { (data, response, error) in
 
@@ -74,6 +74,7 @@ class WeatherModel:ObservableObject {
 
 
 struct WeatherResponse: Decodable {
+    let coord:Coordinate?
     let weather: [Weather]?
     let main: Details?
     let visibility: Int?
@@ -86,6 +87,7 @@ struct WeatherResponse: Decodable {
     let name: String?
     
     enum CodingKeys: String, CodingKey {
+        case coord
         case weather
         case main
         case visibility
@@ -100,6 +102,7 @@ struct WeatherResponse: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.coord = try container.decodeIfPresent(Coordinate.self, forKey: .coord)
         self.weather = try container.decodeIfPresent([Weather].self, forKey: .weather)
         self.main = try container.decodeIfPresent(Details.self, forKey: .main)
         self.visibility = try container.decodeIfPresent(Int.self, forKey: .visibility)
@@ -112,7 +115,8 @@ struct WeatherResponse: Decodable {
         self.name = try container.decodeIfPresent(String.self, forKey: .name)
     }
     
-    init(weather: [Weather]?,
+    init(coord:Coordinate?,
+         weather: [Weather]?,
          main: Details?,
          visibility: Int?,
          wind: Wind?,
@@ -122,6 +126,7 @@ struct WeatherResponse: Decodable {
          sys: SystemData?,
          timezone: Int?,
          name: String?) {
+        self.coord = coord
         self.weather = weather
         self.main = main
         self.visibility = visibility
@@ -132,6 +137,16 @@ struct WeatherResponse: Decodable {
         self.sys = sys
         self.timezone = timezone
         self.name = name
+    }
+}
+
+struct Coordinate:Decodable {
+    let lat:Double?
+    let lon:Double?
+    
+    init(lat: Double?, lon: Double?) {
+        self.lat = lat
+        self.lon = lon
     }
 }
 
