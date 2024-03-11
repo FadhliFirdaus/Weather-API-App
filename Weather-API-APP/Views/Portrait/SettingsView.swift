@@ -23,7 +23,7 @@ struct SettingsView: View {
                 Section(header: Text("Metric")) {
                     Picker("Unit Selection", selection: $metric) {
                         ForEach(Unit.allCases) { unit in
-                            Text("\(unit.rawValue)")
+                            Text("\(unit.getName())")
                         }
                     }
                     .pickerStyle(.segmented)

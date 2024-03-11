@@ -16,24 +16,29 @@ class WeatherModel:ObservableObject {
     
     
     @Published var activeWeatherData:WeatherResponse?
-    let sett = SettingsManager.shared
+    weak var sett = SettingsManager.shared
     
     func getWeatherURL(settingsData:SettingsManager) -> String {
-        let latitude = "lat=\(settingsData.userLat)"
-        let longitude = "&lon=\(settingsData.userLong)"
-        let lang = "&lang=\(settingsData.userLang.getSymbol(lang: settingsData.userLang))"
-        let units = "&units=\(settingsData.unitMode)"
-        let apiKey = "&appid=\(APIManager.WeatherAPIKey)"
-        return APIManager.WeatherAPIbaseURL + "?" + latitude + longitude + lang + units + apiKey
+        if let settings = sett {
+            let latitude = "lat=\(settings.userLat)"
+            let longitude = "&lon=\(settings.userLong)"
+            let lang = "&lang=\(settings.userLang.getSymbol(lang: settings.userLang))"
+            let units = "&units=\(settings.unitMode)"
+            let apiKey = "&appid=\(APIManager.WeatherAPIKey)"
+            return APIManager.WeatherAPIbaseURL + "?" + latitude + longitude + lang + units + apiKey
+        }
+        return ""
     }
     
     func getWeatherData() {
-        let weatherURL = getWeatherURL(settingsData: sett)
-        d(weatherURL)
-        guard let url = URL(string: weatherURL) else {
-            return
+        if let settings = sett {
+            let weatherURL = getWeatherURL(settingsData: settings)
+            d(weatherURL)
+            guard let url = URL(string: weatherURL) else {
+                return
+            }
+            callURLSession(withURL: url)
         }
-        callURLSession(withURL: url)
     }
     
     func decodeWeatherResponse(data:Data) {
