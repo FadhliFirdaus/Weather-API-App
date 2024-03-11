@@ -27,7 +27,7 @@ struct HomeView: View {
             Spacer()
                 .frame(height: 20)
             Button(action: {
-                
+                screen = .MapPicker
             }, label: {
                 Image("map")
                     .resizable()

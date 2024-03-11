@@ -17,8 +17,6 @@ class WeatherModel:ObservableObject {
     
     @Published var activeWeatherData:WeatherResponse?
     let sett = SettingsManager.shared
-    @Published var currentLat:Double = -1
-    @Published var currentLong:Double = -1
     
     func getWeatherURL(settingsData:SettingsManager) -> String {
         let latitude = "lat=\(settingsData.userLat)"
@@ -31,22 +29,21 @@ class WeatherModel:ObservableObject {
     
     func getWeatherData() {
         let weatherURL = getWeatherURL(settingsData: sett)
+        d(weatherURL)
         guard let url = URL(string: weatherURL) else {
             return
         }
-        
         callURLSession(withURL: url)
     }
     
     func decodeWeatherResponse(data:Data) {
         do {
-            
             let decodedResponse = try JSONDecoder().decode(WeatherResponse.self, from: data)
             DispatchQueue.main.async {
                 self.activeWeatherData = decodedResponse
             }
         } catch let error {
-//            print("Error decoding: \(error)")
+            print(error)
         }
     }
     

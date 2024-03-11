@@ -12,46 +12,48 @@ struct BookmarkListView: View {
     @StateObject var bookmarkManager = BookmarkManager.shared
     @StateObject var settingsManager = SettingsManager.shared
     @Binding var screen:Screen
-    
+    @State var isWiggling = false
+    @State var animation:Animation?
+    @State var rotationEffect:Angle?
     var body: some View {
         ScrollView(.horizontal) {
             HStack(spacing:0){
-                ForEach(bookmarkManager.datasource, id:\.self){city in
+                @State var bookmarkData = bookmarkManager.datasource
+                ForEach(bookmarkData, id:\.self){city in
                     GeometryReader{ reader in
                         let rw = reader.size.width
                         let rh = reader.size.height
-                        VStack(spacing:0){
-                            Circle()
-                                .frame(width: rw/2, height: rw/2, alignment: .center)
-                                .overlay {
-                                    Text("\(city.countryCode)")
-                                        .foregroundStyle(.white)
-                                }
-                            Spacer().frame(height: 10)
-                            Text("\(city.cityName)")
-                        }
-                        .frame(width: rw, height: rh, alignment: .center)
+                        BookmarkItemView(rw: rw, rh: rh, isWiggling: $isWiggling, animation: $animation, rotationEffect: $rotationEffect, city: city)
                     }
                     .frame(width: w/4, height: w/4, alignment: .center)
                     .onTapGesture {
-                        settingsManager.userLat = city.lat
-                        settingsManager.userLong = city.long
-                        weatherModel.getWeatherData()
-                        var timer:Timer?
-                        timer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) { _ in
-                            withAnimation {
-                                screen = .LocationDetailView
+                        if(isWiggling){
+                            bookmarkManager.removeIfExist(cityName: city.cityName)
+                        } else {
+                            settingsManager.userLat = city.lat
+                            settingsManager.userLong = city.long
+                            weatherModel.getWeatherData()
+                            var timer:Timer?
+                            timer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) { _ in
+                                withAnimation {
+                                    screen = .LocationDetailView
+                                }
+                                timer?.invalidate()
+                                timer = nil
                             }
-                            timer?.invalidate()
-                            timer = nil
                         }
+                    }
+                    .onLongPressGesture {
+                        self.isWiggling.toggle()
                     }
                 }
                 Spacer()
             }
+            
         }
         .background(Color.gray.opacity(0.1))
         .frame(width: w, height: w/4)
         .scrollIndicators(.hidden)
+        .padding(.leading, 12)
     }
 }

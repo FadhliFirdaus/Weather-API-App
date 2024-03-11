@@ -19,7 +19,7 @@ struct ContentView: View {
             case .Home:
                 HomeView(screen: $screenManager)
             case .MapPicker:
-                Text("hi")
+                MapPinPicker(screen: $screenManager)
             case .BookmarkedLocations:
                 Text("hi")
             case .LocationDetailView:
