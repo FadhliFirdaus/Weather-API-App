@@ -44,7 +44,7 @@ struct LoadingView: View {
             var timer:Timer?
             timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { _ in
                 withAnimation(.spring(.smooth(duration: 1.0))){
-                    weather = weatherModel.activeWeatherData ?? mockWeatherResponse
+                    weather = weatherModel.activeWeatherData ?? nil
                 }
                 timer?.invalidate()
                 timer = nil

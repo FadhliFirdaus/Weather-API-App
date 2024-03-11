@@ -10,26 +10,25 @@ import Foundation
 class BookmarkManager:ObservableObject {
     
     static let shared = BookmarkManager()
+    private let userDefaultsKey = "BookmarkManagerData"
     
-    private init(){}
+    private init() {
+        loadFromUserDefaults()
+    }
     
-    var datasource:[BookmarkedLocation] = [
-        BookmarkedLocation(countryCode: "US", cityName: "New York", lat: 40.7128, long: -74.0060),
-        BookmarkedLocation(countryCode: "UK", cityName: "London", lat: 51.5074, long: -0.1278),
-        BookmarkedLocation(countryCode: "FR", cityName: "Paris", lat: 48.8566, long: 2.3522),
-    ]
+    @Published var datasource: [BookmarkedLocation] = [] {
+        didSet {
+            saveToUserDefaults()
+        }
+    }
     
     var previousLocation =  BookmarkedLocation(countryCode: "FR", cityName: "Paris", lat: 48.8566, long: 2.3522)
     
     var activeBookmark:BookmarkedLocation?
     
     func addBookmark(location:BookmarkedLocation){
-        let locationExists = datasource.contains { $0 == location }
-        if !locationExists {
+        if(!datasource.contains(where: {$0 == location})){
             datasource.append(location)
-            print("Bookmark added: \(location)")
-        } else {
-            d("contained")
         }
     }
     
@@ -38,13 +37,40 @@ class BookmarkManager:ObservableObject {
     }
     
     func removeIfExist(cityName:String){
-        datasource.removeAll(where: {
-            $0.cityName == cityName
-        })
+        datasource.removeAll { $0.cityName == cityName }
+    }
+    private func saveToUserDefaults() {
+        do {
+            let encodedData = try JSONEncoder().encode(datasource)
+            UserDefaults.standard.set(encodedData, forKey: userDefaultsKey)
+            
+            let previousLocationData = try JSONEncoder().encode(previousLocation)
+            UserDefaults.standard.set(previousLocationData, forKey: "PreviousLocation")
+        } catch {
+            print("Error encoding data: \(error.localizedDescription)")
+        }
+    }
+    
+    private func loadFromUserDefaults() {
+        if let encodedData = UserDefaults.standard.data(forKey: userDefaultsKey) {
+            do {
+                datasource = try JSONDecoder().decode([BookmarkedLocation].self, from: encodedData)
+            } catch {
+                print("Error decoding data: \(error.localizedDescription)")
+            }
+        }
+        
+        if let previousLocationData = UserDefaults.standard.data(forKey: "PreviousLocation") {
+            do {
+                previousLocation = try JSONDecoder().decode(BookmarkedLocation.self, from: previousLocationData)
+            } catch {
+                print("Error decoding previous location data: \(error.localizedDescription)")
+            }
+        }
     }
 }
 
-struct BookmarkedLocation:Hashable {
+struct BookmarkedLocation:Hashable, Codable {
     let countryCode:String
     let cityName:String
     let lat:Double
