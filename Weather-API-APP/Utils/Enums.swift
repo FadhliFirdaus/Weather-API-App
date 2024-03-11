@@ -8,11 +8,21 @@
 import Foundation
 
 enum Unit:String, CaseIterable, Identifiable, CustomStringConvertible {
-    case standard = "Kelvin"
-    case metric = "Celsius"
-    case imperial = "Fahrenheit"
+    case standard = "standard"
+    case metric = "metric"
+    case imperial = "imperial"
     
     
+    func getName() ->String {
+        switch self {
+        case .standard :
+            return "Kelvin"
+        case .metric:
+            return "Celsius"
+        case .imperial :
+            return "Fahrenheit"
+        }
+    }
     var id: Self { self }
     
     var description: String {
