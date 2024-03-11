@@ -22,8 +22,14 @@ class BookmarkManager:ObservableObject {
         }
     }
     
-    var previousLocation =  BookmarkedLocation(countryCode: "FR", cityName: "Paris", lat: 48.8566, long: 2.3522)
-    
+    var previousLocation = BookmarkedLocation(countryCode: "FR", cityName: "Paris", lat: 48.8566, long: 2.3522) {
+        didSet {
+            if !datasource.contains(previousLocation) {
+                saveToUserDefaults()
+            }
+        }
+    }
+
     var activeBookmark:BookmarkedLocation?
     
     func addBookmark(location:BookmarkedLocation){
@@ -60,11 +66,14 @@ class BookmarkManager:ObservableObject {
             }
         }
         
-        if let previousLocationData = UserDefaults.standard.data(forKey: "PreviousLocation") {
-            do {
-                previousLocation = try JSONDecoder().decode(BookmarkedLocation.self, from: previousLocationData)
-            } catch {
-                print("Error decoding previous location data: \(error.localizedDescription)")
+            // Only load previousLocation if it hasn't been set yet
+        if previousLocation.countryCode == "FR" && previousLocation.cityName == "Paris" {
+            if let previousLocationData = UserDefaults.standard.data(forKey: "PreviousLocation") {
+                do {
+                    previousLocation = try JSONDecoder().decode(BookmarkedLocation.self, from: previousLocationData)
+                } catch {
+                    print("Error decoding previous location data: \(error.localizedDescription)")
+                }
             }
         }
     }

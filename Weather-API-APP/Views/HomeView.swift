@@ -23,7 +23,7 @@ struct HomeView: View {
         @State var previousLocation = bookmarkManager.previousLocation
         
         VStack(spacing:0){
-            HeaderView(showHelp: $showHelp)
+            HeaderView(showHelp: $showHelp, screen: $screen)
             Spacer()
                 .frame(height: 20)
             Button(action: {

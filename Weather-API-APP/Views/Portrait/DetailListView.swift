@@ -88,7 +88,7 @@ struct DetailListView:View {
                 Text("Visibility")
             }
             
-            let rate = settings.unitMode.getMS()
+            let rate = settings.unitMode.getMS(lang: settings.userLang)
             if let wind = weather.wind {
                 Section {
                     if let speed = weather.wind?.speed {

@@ -21,7 +21,7 @@ class WeatherModel:ObservableObject {
     func getWeatherURL(settingsData:SettingsManager) -> String {
         let latitude = "lat=\(settingsData.userLat)"
         let longitude = "&lon=\(settingsData.userLong)"
-        let lang = "&lang=\(settingsData.userLang)"
+        let lang = "&lang=\(settingsData.userLang.getSymbol(lang: settingsData.userLang))"
         let units = "&units=\(settingsData.unitMode)"
         let apiKey = "&appid=\(APIManager.WeatherAPIKey)"
         return APIManager.WeatherAPIbaseURL + "?" + latitude + longitude + lang + units + apiKey
@@ -41,6 +41,7 @@ class WeatherModel:ObservableObject {
             let decodedResponse = try JSONDecoder().decode(WeatherResponse.self, from: data)
             DispatchQueue.main.async {
                 self.activeWeatherData = decodedResponse
+                d(decodedResponse)
             }
         } catch let error {
             print(error)

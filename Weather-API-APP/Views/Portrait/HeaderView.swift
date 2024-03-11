@@ -10,6 +10,7 @@ import SwiftUI
 
 struct HeaderView: View {
     @Binding var showHelp:Bool
+    @Binding var screen:Screen
     var body: some View {
         ZStack {
             Text("Pin to Peek")
@@ -23,6 +24,15 @@ struct HeaderView: View {
                     showHelp = true
                 } label: {
                     Image(systemName: "info.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30, height: 30, alignment: .center)
+                }
+                
+                Button {
+                    screen = .SettingsView
+                } label: {
+                    Image(systemName: "gear")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 30, height: 30, alignment: .center)

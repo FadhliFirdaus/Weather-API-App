@@ -25,10 +25,8 @@ struct MapPinPicker: View {
     
     var body: some View {
         VStack {
-            TextField("Enter place name", text: $placeName, onCommit: {
-            })
-            .padding()
-            .textFieldStyle(RoundedBorderTextFieldStyle())
+            Text("Pin a location on the map")
+                .font(.title)
             
             Map(position: $position, interactionModes: .all)
                 .mapStyle(.hybrid(elevation: .realistic))
@@ -55,6 +53,7 @@ struct MapPinPicker: View {
                 Text("Peek this location!")
             })
             .padding(12)
+            .buttonStyle(.borderedProminent)
         }
     }
 }
