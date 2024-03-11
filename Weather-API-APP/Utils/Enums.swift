@@ -1,16 +1,23 @@
-//
-//  Enums.swift
-//  Weather-API-APP
-//
-//  Created by Fadhli Firdaus on 09/03/2024.
-//
+    //
+    //  Enums.swift
+    //  Weather-API-APP
+    //
+    //  Created by Fadhli Firdaus on 09/03/2024.
+    //
 
 import Foundation
 
-enum Unit:String {
+enum Unit:String, CaseIterable, Identifiable, CustomStringConvertible {
     case standard = "Kelvin"
     case metric = "Celsius"
     case imperial = "Fahrenheit"
+    
+    
+    var id: Self { self }
+    
+    var description: String {
+        return self.rawValue
+    }
     
     func getSymbol() -> String {
         switch self {
@@ -23,21 +30,69 @@ enum Unit:String {
         }
     }
     
-    func getMS() -> String{
-        switch self{
-        case .standard:
-            return "meter/sec"
-        case .metric:
-            return "meter/sec"
-        case .imperial:
-            return "miles/hour"
+    func getMS(lang:Language) -> String{
+        switch lang {
+        case .English:
+            switch self{
+            case .standard:
+                return "meter/sec"
+            case .metric:
+                return "meter/sec"
+            case .imperial:
+                return "miles/hour"
+            }
+        case .Malay:
+            switch self{
+            case .standard:
+                return "meter/saat"
+            case .metric:
+                return "meter/saat"
+            case .imperial:
+                return "batu/jam"
+            }
+        case .Arabic:
+            switch self{
+            case .standard:
+                return "متر - ثانية"
+            case .metric:
+                return "متر - ثانية"
+            case .imperial:
+                return "ميل - ساعة"
+            }
         }
+        
     }
 }
+enum Language:String, CaseIterable, Identifiable, CustomStringConvertible {
+    case English = "English"
+    case Malay = "Malay"
+    case Arabic = "Arabic"
+    
+    func getSymbol(lang:Language) -> String{
+        switch self {
+        case .Arabic:
+            return "ar"
+        case .English:
+            return "en"
+        case .Malay:
+            return "my"
+        }
+    }
+    
+    
+    var id: Self { self }
+    
+    var description: String {
+        return self.rawValue
+    }
+}
+
+
 
 enum Screen {
     case Home
     case MapPicker
     case BookmarkedLocations
     case LocationDetailView
+    case SettingsView
 }

@@ -49,11 +49,10 @@ struct BookmarkListView: View {
                 }
                 Spacer()
             }
-            
+            .padding(.leading, 12)
         }
         .background(Color.gray.opacity(0.1))
         .frame(width: w, height: w/4)
         .scrollIndicators(.hidden)
-        .padding(.leading, 12)
     }
 }

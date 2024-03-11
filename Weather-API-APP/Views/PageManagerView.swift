@@ -24,6 +24,8 @@ struct ContentView: View {
                 Text("hi")
             case .LocationDetailView:
                 DetailView(screenManager: $screenManager)
+            case .SettingsView:
+                SettingsView(screen: $screenManager)
             }
             
         }
